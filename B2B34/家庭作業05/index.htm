@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>家庭作業05</title>
+	<style>
+		div {
+            color: blue;
+            margin: 5px;
+        }
+		h4 {
+			color: red;
+        }
+    </style>
+</head>
+	<body>
+    <form id="form01">
+        姓名:<input type="text" name="name01" value="鄭旭昇"><br>
+        收件地址:<input type="text" name="address01" value="新北市新店區建國路100號4樓"><br>
+        電話:<input type="tel" name="tel01" value="0968829305"><br>
+        電子郵件:<input type="email" name="email01" value="david61505@gmail.com"><br>
+        指定送貨日期:<input type="date" name="date01"><br>
+        電腦&周邊:<br><input type="radio" name="pc" id="pc01" value="SAMSUNG 24型VA曲面電競螢幕(C24RG50FQC)(1件)">SAMSUNG 24型VA曲面電競螢幕(C24RG50FQC)(1件) 5990元<br>
+        <input type="radio" name="pc" id="pc02" value="HyperX Cloud Flight 無線電競耳機 (HX-HSCF-BK/AM)(2個)">HyperX Cloud Flight 無線電競耳機 (HX-HSCF-BK/AM)(2個) 7180元<br>
+        <input type="radio" name="pc" id="pc03" value="【i-Rocks】K76MN CUSTOM 靜音機械式鍵盤-茶軸+M23R-消光黑(3件)">【i-Rocks】K76MN CUSTOM 靜音機械式鍵盤-茶軸+M23R-消光黑(3件) 9270元<br>
+        <input type="radio" name="pc" id="pc04" value="IDEA-舒馬克3D立體包覆舒適電競賽車椅-紅色款(4個)">IDEA-舒馬克3D立體包覆舒適電競賽車椅-紅色款(4個) 11996元<br>
+        <input type="radio" name="pc" id="pc05" value="【ROG Zephyrus】Zephyrus G14 GA401II-0081E4800HS 灰(無燈版)(5臺)">【ROG Zephyrus】Zephyrus G14 GA401II-0081E4800HS 灰(無燈版)(5臺) 184500元<br>
+        </form>
+        <button onclick="shoppingInfo()"><h4>結帳</h4></button>
+        <div id="demo"></div>
+    <script>
+        function shoppingInfo() {
+            var x= document.getElementById("form01");
+            var item= "";
+            var price= 0;
+            var text="<h4>您的購買資訊如下:</h4>";
+            var i;
+            text += "<table border='1' cellspacing='0' cellpadding='0'>";
+        
+            for (i=0; i<5; i++) {
+                text += "<tr>";
+                switch(i) {
+                    case 0:
+                        item= "姓名: ";
+                    break;
+                    case 1:
+                        item= "收件地址: ";
+                    break;
+                    case 2:
+                        item= "電話: ";
+                    break;
+                    case 3:
+                        item= "電子郵件: ";
+                    break;
+                    case 4:
+                        item= "指定送貨日期: ";
+                    break;
+                }
+            text += "<td>" + item + "</td>" + "<td>" + x.elements[i].value + "</td>";
+            text += "</tr>";    
+            }
+            for(i=5; i<=9; i++){
+                if(x.elements[i].checked == true){
+                    switch(i){
+                   case 5: price=5990; break;
+                   case 6: price=7180; break;
+                   case 7: price=9270; break;
+                   case 8: price=11996; break;
+                   case 9: price=184500; break;        
+                    }
+               text += "<tr><td>電腦&周邊: </td>" + "<td>" + x.elements[i].value + "</td></tr>";
+               text += "<tr><td>價格合計: </td>" + "<td>" + price + "元</td><tr>";
+                }
+                text += "</tr>";
+            }
+            text += "</table>";
+          document.getElementById("demo").innerHTML = text;
+        }
+    </script>
+    </body>
+</html>
